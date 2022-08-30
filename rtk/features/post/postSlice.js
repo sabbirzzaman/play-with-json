@@ -12,13 +12,13 @@ const initialState = {
 // get single post
 const fetchPost = createAsyncThunk(
     'post/fetchPost',
-    async (userId, thunkAPI) => {
-        const res = await fetch('https://jsonplaceholder.typicode.com/posts/1');
+    async (postAPI, thunkAPI) => {
+        const res = await fetch(postAPI + '/posts/1');
         const post = await res.json();
 
         const titleArr = post.title.split(' ').map((title) => '&title_like=' + title);
         const queryString = titleArr.join('').substring(1);
-        const url = `https://jsonplaceholder.typicode.com/posts?${queryString}`;
+        const url = `${postAPI}/posts?${queryString}`;
 
         thunkAPI.dispatch(fetchRecentPost(url));
         return post;

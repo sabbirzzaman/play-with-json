@@ -1,5 +1,5 @@
 const { configureStore } = require('@reduxjs/toolkit');
-const {logger} = require('redux-logger');
+const { logger } = require('redux-logger');
 const postReducer = require('../features/post/postSlice');
 
 // store configuration
